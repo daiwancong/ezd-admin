@@ -15,6 +15,7 @@ module.exports = {
         config.resolve.alias
           .set('@', resolve('src'))
           .set('@assets', resolve('src/assets'))
+          .set('_c',resolve('src/componet'))
     },
     devServer: {
         host: "localhost",
