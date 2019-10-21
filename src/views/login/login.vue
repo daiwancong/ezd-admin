@@ -11,6 +11,7 @@
       <login-sign v-else></login-sign>
       <el-button type="text"  @click.native="loginChange">没有账号?立即注册</el-button>
     </div>
+
   </div>
 </template>
 
