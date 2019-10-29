@@ -9,9 +9,8 @@
       <login-in v-if="loginOrSign" @formLoginIn="onloginIn"></login-in>
       <!-- 注册form -->
       <login-sign v-else @formLoginSign="onLoginSign"></login-sign>
-      <el-button type="text"  @click.native="loginChange">{{loginTxt}}</el-button>
+      <el-button class="login-txt" type="text"  @click.native="loginChange">{{loginTxt}}</el-button>
     </div>
-
   </div>
 </template>
 

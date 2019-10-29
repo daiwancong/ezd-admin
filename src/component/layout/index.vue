@@ -1,12 +1,13 @@
 <template>
   <div class="layout">
     <el-container class="layout-wrap">
-      <el-aside :width="getAsideWidth"></el-aside>
+      <el-aside class="aside-wrap" :width="getAsideWidth">
+        <!-- 导航组件 -->
+          <nav-bar class="nav-bar" :isCollapse="asideStatus"></nav-bar>
+      </el-aside>
       <el-container>
         <el-header>
-          <div class="icon-wrap">
-            <i class="el-icon-turn-off"  @click="onShrinkMenu"></i>
-          </div>
+          <shrink  class="shrink-wrap" @switchStatus="onShrinkMenu"/>
         </el-header>
         <el-container class="main-wrap">
           <el-main></el-main>
@@ -17,23 +18,29 @@
 </template>
 <script>
 import "./index.less";
+import NavBar from './componets/nav-bar'
+import Shrink from '@/component/shrink/index'
 export default {
   name: "layout",
   data() {
     return {
         asideStatus:true,
-        asideWidth: '250px'
+        asideWidth: '65px'
     };
   },
   computed: {
       getAsideWidth:function() {
-          return this.asideWidth = this.asideStatus?'250px':'65px'
+          return this.asideWidth = this.asideStatus?'65px':'250px'
       }
   },
   methods: {
-    onShrinkMenu() {
-        this.asideStatus = !this.asideStatus
+    onShrinkMenu (val) {
+      this.asideStatus = val
     }
+  },
+  components: {
+    NavBar,
+    Shrink
   }
 };
 </script>
