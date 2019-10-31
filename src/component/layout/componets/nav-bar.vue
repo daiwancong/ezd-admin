@@ -5,57 +5,60 @@
     background-color="#001529"
     text-color="#adb2bb"
     active-text-color="#2086e2"
-    :collapse-transition = false
+    :collapse-transition="false"
   >
-    <el-submenu index="1">
-      <template slot="title">
-        <i class="el-icon-location"></i>
-        <span slot="title">导航一</span>
-      </template>
-      <el-menu-item-group>
-        <span slot="title">分组一</span>
-        <el-menu-item index="1-1">选项1</el-menu-item>
-        <el-menu-item index="1-2">选项2</el-menu-item>
-      </el-menu-item-group>
-      <el-menu-item-group title="分组2">
-        <el-menu-item index="1-3">选项3</el-menu-item>
-      </el-menu-item-group>
-      <el-submenu index="1-4">
-        <span slot="title">选项4</span>
-        <el-menu-item index="1-4-1">选项1</el-menu-item>
-      </el-submenu>
-    </el-submenu>
-    <el-menu-item index="2">
-      <i class="el-icon-menu"></i>
-      <span slot="title">导航二</span>
-    </el-menu-item>
-    <el-menu-item index="3" disabled>
-      <i class="el-icon-document"></i>
-      <span slot="title">导航三</span>
-    </el-menu-item>
-    <el-menu-item index="4">
-      <i class="el-icon-setting"></i>
-      <span slot="title">导航四</span>
-    </el-menu-item>
+    <submenu-item v-for="(item,index) in arrData" :key="index"  :items="item" />
   </el-menu>
 </template>
 <script>
+import submenuItem from './submenuItem';
 export default {
-    props: {
-        isCollapse: {
-            type:Boolean,
-            default:true
-        }
-    },
-    data() {
-        return {
-
-        }
+  props: {
+    isCollapse: {
+      type: Boolean,
+      default: true
     }
-}
+  },
+  data() {
+    return {
+      arrData: [
+        {
+          title: "导航一",
+          icon: "el-icon-location",
+          children: [
+            {
+              title: "选项1"
+            },
+            {
+              title: "选项2"
+            },
+            {
+              title: "选项3"
+            }
+          ]
+        },
+        {
+          title: "导航二",
+          icon: "el-icon-menu"
+        },
+        {
+          title: "导航三",
+          icon: "el-icon-document"
+        },
+        {
+          title: "导航四",
+          icon: "el-icon-setting"
+        }
+      ]
+    };
+  },
+  components: {
+    submenuItem
+  }
+};
 </script>
 <style lang="less" scoped>
-  .el-menu-vertical-demo:not(.el-menu--collapse) {
-    height: 100%;
-  }
+.el-menu-vertical-demo:not(.el-menu--collapse) {
+  height: 100%;
+}
 </style>

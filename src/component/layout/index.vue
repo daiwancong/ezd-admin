@@ -3,7 +3,7 @@
     <el-container class="layout-wrap">
       <el-aside class="aside-wrap" :width="getAsideWidth">
         <!-- 导航组件 -->
-          <nav-bar class="nav-bar" :isCollapse="asideStatus"></nav-bar>
+            <nav-bar class="nav-bar" :isCollapse="asideStatus" />
       </el-aside>
       <el-container>
         <el-header>
